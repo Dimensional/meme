@@ -1,4 +1,6 @@
 ﻿using System.Runtime.InteropServices;
+using System.Text.Json;
+using System.Reflection;
 
 // Troll program - displays fake "malware" installation and opens Nintendo eShop
 // Spam some gibberish to look threatening
@@ -32,69 +34,29 @@ Console.ResetColor();
 // Get the executable name without extension
 var exeName = Path.GetFileNameWithoutExtension(Environment.ProcessPath ?? "meme").ToLowerInvariant();
 
-// Define games with multiple aliases
-var games = new[]
+// Load games from embedded JSON resource
+Game[] games = [];
+
+try
 {
-    new
+    var assembly = Assembly.GetExecutingAssembly();
+    var resourceName = "meme.games.json";
+
+    using var stream = assembly.GetManifestResourceStream(resourceName);
+    if (stream != null)
     {
-        Names = new[] { "zelda", "totk", "tears", "tearsofthekingdom", "tloz" },
-        Url = "https://www.nintendo.com/us/store/products/the-legend-of-zelda-tears-of-the-kingdom-switch/"
-    },
-    new
-    { Names = new[] { "breathofthewild", "botw", "zelda1", "zelda", "wild" },
-        Url = "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/"
-    },
-    new
-    {
-        Names = new[] { "mario", "supermario", "mariobros", "mariowonder", "wonder" },
-        Url = "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
-    },
-    new
-    {
-        Names = new[] { "MarioKart", "mariokart8deluxe", "mk8", "mk8d", "mariokart" },
-        Url = "https://www.nintendo.com/us/store/products/mario-kart-8-deluxe-switch/"
-    },
-    new
-    {
-        Names = new[] { "pokemonlegends", "pokemonlegendsarceus", "arceus", "pkmnlegends" },
-        Url = "https://www.nintendo.com/us/store/products/pokemon-legends-arceus-switch/"
-    },
-    new
-    {
-        Names = new[] { "pokemonshiningpearl", "shiningpearl", "pearl", "pkmnpearl" },
-        Url = "https://www.nintendo.com/us/store/products/pokemon-shining-pearl-switch/"
-    },
-    new
-    {
-        Names = new[] { "pokemon", "pokémon", "scarlet", "violet", "pkmn" },
-        Url = "https://www.nintendo.com/us/store/products/pokemon-scarlet-switch/"
-    },
-    new
-    {
-        Names = new[] { "splatoon", "splatoon3", "splat", "splat3" },
-        Url = "https://www.nintendo.com/us/store/products/splatoon-3-switch/"
-    },
-    new
-    {
-        Names = new[] { "metroid", "metroiddread", "dread", "samus" },
-        Url = "https://www.nintendo.com/us/store/products/metroid-dread-switch/"
-    },
-    new
-    {
-        Names = new[] { "kirby", "kirbyforgottenland", "forgottenland", "pinky" },
-        Url = "https://www.nintendo.com/us/store/products/kirby-and-the-forgotten-land-switch/"
-    },
-    new
-    {
-        Names = new[] { "animalcrossing", "acnh", "newhorizons", "isabelle", "nook" },
-        Url = "https://www.nintendo.com/us/store/products/animal-crossing-new-horizons-switch/"
-    },
-    new
-    {
-        Names = new[] { "smash", "smashbros", "ssbu", "ultimate", "smashultimate" },
-        Url = "https://www.nintendo.com/us/store/products/super-smash-bros-ultimate-switch/"
+        games = JsonSerializer.Deserialize<Game[]>(stream, new JsonSerializerOptions
+        {
+            PropertyNameCaseInsensitive = true,
+            ReadCommentHandling = JsonCommentHandling.Skip,  // Enable comment support
+            AllowTrailingCommas = true  // Also allows trailing commas
+        }) ?? [];
     }
-};
+}
+catch (Exception ex)
+{
+    Console.WriteLine($"Warning: Could not load games list: {ex.Message}");
+}
 
 // Find matching URL based on executable name
 var url = games.FirstOrDefault(g => g.Names.Contains(exeName, StringComparer.OrdinalIgnoreCase))?.Url
@@ -140,3 +102,5 @@ catch (Exception ex)
 }
 
 Thread.Sleep(200); // Give time to see the final message before closing
+
+record Game(string[] Names, string Url);

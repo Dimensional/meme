@@ -8,4 +8,7 @@
     <InvariantGlobalization>true</InvariantGlobalization>
   </PropertyGroup>
 
+  <ItemGroup>
+    <EmbeddedResource Include="games.json" />
+  </ItemGroup>
 </Project>
