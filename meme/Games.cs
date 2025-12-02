@@ -1,3 +1,5 @@
+using static System.Net.WebRequestMethods;
+
 namespace meme;
 
 public static class Games
@@ -13,6 +15,30 @@ public static class Games
             ["breathofthewild", "botw", "zelda1", "wild"],
             "https://www.nintendo.com/us/store/products/the-legend-of-zelda-breath-of-the-wild-switch/"
         ),
+        new(
+            ["echos", "zeldaechoes", "zeldaechoesofwisdom", "eow"],
+            "https://www.nintendo.com/us/store/products/the-legend-of-zelda-echoes-of-wisdom-switch/"
+        ),
+        new(
+            ["linkawakening", "zeldalinkawakening", "linkawake"],
+            "https://www.nintendo.com/us/store/products/the-legend-of-zelda-links-awakening-switch/"
+        ),
+        new(
+            ["skyward", "zeldaskyward", "skywardsword", "skywardswordhd"],
+            "https://www.nintendo.com/us/store/products/the-legend-of-zelda-skyward-sword-hd-switch/"
+        ),
+        new(
+            ["hyrulewarriors", "hyrulewarriorsageofcalamity", "hwac"],
+            "https://www.nintendo.com/us/store/products/hyrule-warriors-age-of-calamity-switch/"
+        ),
+        new(
+            ["hyrulewarriorsdefinitiveedition", "hyrulewarriorsde"],
+            "https://www.nintendo.com/us/store/products/hyrule-warriors-definitive-edition-switch/"
+        ),
+        new(
+            ["ageofimprisonment", "zeldaageofimprisonment", "aoi"],
+            "https://www.nintendo.com/us/store/products/the-legend-of-zelda-age-of-imprisonment-switch-2/"
+        ),
 
         // Mario Series
         new(
@@ -23,11 +49,31 @@ public static class Games
             ["mario", "supermario", "mariobros", "mariowonder", "wonder"],
             "https://www.nintendo.com/us/store/products/super-mario-bros-wonder-switch/"
         ),
+        new(
+            ["SMBrosU", "supermariobrosu", "mariobrosu"],
+            "https://www.nintendo.com/us/store/products/super-mario-bros-u-deluxe-switch/"
+        ),
+        new(
+            ["marioparty", "mariopartyuperstars", "mpus"],
+            "https://www.nintendo.com/us/store/products/mario-party-superstars-switch/"
+        ),
+        new(
+            ["galaxymario", "supermariogalaxy", "mariogalaxy", "galaxy", "galaxy1"],
+            "https://www.nintendo.com/us/store/products/super-mario-galaxy-switch/"
+        ),
+        new(
+            ["galaxy2mario", "supermariogalaxy2", "mariogalaxy2", "galaxy2"],
+            "https://www.nintendo.com/us/store/products/super-mario-galaxy-2-switch/"
+        ),
 
         // Pokemon Series
         new(
             ["pokemonlegends", "pokemonlegendsarceus", "arceus", "pkmnlegends"],
             "https://www.nintendo.com/us/store/products/pokemon-legends-arceus-switch/"
+        ),
+        new(
+            ["pokemonlegendsza", "legendsza", "pkmnza", "za"],
+            "https://www.nintendo.com/us/store/products/pokemon-legends-z-a-switch/"
         ),
         new(
             ["pokemonsword", "sword", "pkmnsword"],
@@ -79,8 +125,20 @@ public static class Games
             ["fireemblem", "fireemblemthreehouses", "threehouses", "fe3h"],
             "https://www.nintendo.com/us/store/products/fire-emblem-three-houses-switch/"
         ),
+        new(
+            ["fireemblemwarriors", "fe warriors", "fireemblemwarriorsthreehopes", "threehopes"],
+            "https://www.nintendo.com/us/store/products/fire-emblem-warriors-three-hopes-switch/"
+        ),
+        new(
+            ["fireemblemengage", "feengage", "engage"],
+            "https://www.nintendo.com/us/store/products/fire-emblem-engage-switch/"
+        ),
 
         // Splatoon
+        new(
+            ["splatoon2", "splat2", "splatoon2"],
+            "https://www.nintendo.com/us/store/products/splatoon-2-switch/"
+        ),
         new(
             ["splatoon3", "splat", "splat3"],
             "https://www.nintendo.com/us/store/products/splatoon-3-switch/"
@@ -133,6 +191,10 @@ public static class Games
             ["donkeykong", "dk", "donkeykongcountry", "donkeykongcountrytropicalfreeze"],
             "https://www.nintendo.com/us/store/products/donkey-kong-country-tropical-freeze-switch/"
         ),
+        new(
+            ["dkbananza", "dk-banana-blast"],
+            "https://www.nintendo.com/us/store/products/donkey-kong-banana-blast-switch/"
+        ),
 
         // Yoshi
         new(
@@ -148,6 +210,68 @@ public static class Games
         new(
             ["deltarune", "deltaruneswitch", "deltarunexl"],
             "https://www.nintendo.com/us/store/products/deltarune-switch/"
+        ),
+
+        // Final Fantasy
+        new(
+            ["finalfantasy", "ff", "ffi", "finalfantasy1"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-switch/"
+        ),
+        new(
+            ["finalfantasyii", "ffii", "finalfantasy2"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-ii-switch/"
+        ),
+        new(
+            ["finalfantasyiii", "ffiii", "finalfantasy3"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-iii-switch/"
+        ),
+        new(
+            ["finalfantasyiv", "ffiv", "finalfantasy4"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-iv-switch/"
+        ),
+        new(
+            ["finalfantasyv", "ffv", "finalfantasy5"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-v-switch/"
+        ),
+        new(
+            ["finalfantasyvi", "ffvi", "finalfantasy6"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-vi-switch/"
+        ),
+        new(
+            ["finalfantasyvii", "ffvii", "finalfantasy7"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-vii-switch/"
+        ),
+        new(
+            ["limited-early-purchase-edition", "finalfantasyvii", "remake", "intergrade"],
+            "https://www.nintendo.com/us/store/products/limited-early-purchase-editionfinal-fantasy-vii-remake-intergrade-switch-2/"
+        ),
+        new(
+            ["finalfantasyviii", "ffviii", "finalfantasy8"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-viii-remastered-switch/"
+        ),
+        new(
+            ["finalfantasyix", "ffix", "finalfantasy9"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-ix-switch/"
+        ),
+        new(
+            ["ffx", "ffx-switch", "finalfantasyx"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-x-x-2-hd-switch/"
+        ),
+        new(
+            ["finalfantasyxii", "ffxii", "ffxii-the-zodiac-age"],
+            "https://www.nintendo.com/us/store/products/final-fantasy-xii-the-zodiac-age-switch/"
+        ),
+        
+        // Spyro
+        new(
+            ["spyro", "spyrothedragon", "spyrotrilogy"],
+            "https://www.nintendo.com/us/store/products/spyro-reignited-trilogy-switch/"
+        ),
+
+        // RickRoll youtube
+        new(
+            ["rickroll", "nevergonnagiveyouup", "rickastley", "rick"],
+            "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
         )
     ];
 }
