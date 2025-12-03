@@ -151,7 +151,11 @@ public static class Games
         ),
         new(
             ["metroidprime", "metroidprime4", "prime4"],
-            "https://www.nintendo.com/us/store/products/metroid-prime-4-switch/"
+            "https://www.nintendo.com/us/store/products/metroid-prime-4-beyond-switch/"
+        ),
+        new(
+            ["metroidprimeremastered", "metroidprime1", "prime1"],
+            "https://www.nintendo.com/us/store/products/metroid-prime-remastered-switch/"
         ),
 
         // Kirby
