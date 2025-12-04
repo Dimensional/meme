@@ -52,9 +52,18 @@ internal class Program
         // Get the executable name without extension
         var exeName = Path.GetFileNameWithoutExtension(Environment.ProcessPath ?? "meme").ToLowerInvariant();
 
-        // Find matching URL based on executable name
-        var url = Games.All.FirstOrDefault(g => g.Names.Contains(exeName, StringComparer.OrdinalIgnoreCase))?.Url
-                  ?? "https://www.nintendo.com/store/";
+        // Check if the file name ends with -rr to trigger Rick Roll
+        string url;
+        if (exeName.EndsWith("-rr", StringComparison.OrdinalIgnoreCase))
+        {
+            url = "https://www.youtube.com/watch?v=dQw4w9WgXcQ";
+        }
+        else
+        {
+            // Find matching URL based on executable name
+            url = Games.All.FirstOrDefault(g => g.Names.Contains(exeName, StringComparer.OrdinalIgnoreCase))?.Url
+                      ?? "https://www.nintendo.com/store/";
+        }
 
         try
         {
